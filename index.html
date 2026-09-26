@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Cargo — Shipping made simple.</title>
+  <meta name="description" content="Connect with verified travelers to ship packages worldwide. Save up to 70% versus traditional couriers while cutting your carbon footprint.">
+  <meta name="theme-color" content="#FFF9EB">
+  
+  <!-- Preconnect & Google Fonts: Instrument Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Ambient Subtle Organic Background Texture -->
+  <div class="background-grain" aria-hidden="true"></div>
+
+  <!-- Global Header / Navigation -->
+  <header class="site-header" id="site-header">
+    <div class="nav-container">
+      <!-- Wordmark / Brand Logo -->
+      <a href="#" class="brand-logo" id="brand-logo" aria-label="TravelCargo Home">
+        <svg class="brand-icon" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="14" cy="14" r="12" stroke="#200f07" stroke-width="1.75" />
+          <path d="M7 14C11 11 17 11 21 14" stroke="#c4dae8" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M10 8C13 14 15 14 18 20" stroke="#c5e384" stroke-width="2" stroke-linecap="round" />
+          <path d="M6 13.5L14 10L22 13.5L14 17L6 13.5Z" fill="#FFF9EB" stroke="#200f07" stroke-width="1.5" stroke-linejoin="round" />
+          <circle cx="14" cy="13.5" r="2" fill="#c5e384" stroke="#200f07" stroke-width="1" />
+        </svg>
+        <span class="brand-text">TravelCargo</span>
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="nav-menu" id="nav-menu" aria-label="Primary Navigation">
+        <ul class="nav-list">
+          <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
+          <li><a href="#benefits" class="nav-link">Benefits</a></li>
+          <li><a href="#destinations" class="nav-link">Destinations</a></li>
+          <li><a href="#trust" class="nav-link">Trust</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#blog" class="nav-link">Blog</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions (Login + CTA) -->
+      <div class="nav-actions">
+        <button type="button" class="btn-login" id="btn-login-header">Login</button>
+        <button type="button" class="btn-nav-cta" id="btn-get-started">Get Started</button>
+        
+        <!-- Mobile Menu Toggle Button -->
+        <button type="button" class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobile-nav-drawer" aria-hidden="true">
+      <div class="mobile-nav-content">
+        <ul class="mobile-nav-list">
+          <li><a href="#how-it-works" class="mobile-nav-link">How it Works</a></li>
+          <li><a href="#benefits" class="mobile-nav-link">Benefits</a></li>
+          <li><a href="#destinations" class="mobile-nav-link">Destinations</a></li>
+          <li><a href="#trust" class="mobile-nav-link">Trust</a></li>
+          <li><a href="#about" class="mobile-nav-link">About</a></li>
+          <li><a href="#blog" class="mobile-nav-link">Blog</a></li>
+        </ul>
+        <div class="mobile-nav-actions">
+          <button type="button" class="btn-login mobile-btn" id="mobile-btn-login">Login</button>
+          <button type="button" class="btn-primary mobile-btn" id="mobile-btn-get-started">Get Started</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Immersive Fullscreen Hero Section -->
+  <main class="hero-section" id="hero-section">
+    
+    <!-- 3D Doodle Globe Atmospheric Layer (Peeking in from Bottom-Right Corner) -->
+    <div class="globe-atmospheric-layer" id="globe-layer" aria-hidden="true">
+      <canvas id="doodle-globe-canvas" class="doodle-globe-canvas"></canvas>
+    </div>
+
+    <!-- Floating Compact Pill: Live Verified Match (Positioned safely within viewport) -->
+    <div class="floating-match-pill-wrapper">
+      <div class="floating-match-pill" id="live-match-card" role="status" aria-label="Live verified match">
+        <div class="match-pill-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#200f07" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+          </svg>
+        </div>
+        <span class="match-pill-label">NEW MATCH:</span>
+        <div class="match-pill-route" id="match-route-text">
+          <strong>Berlin</strong> <span class="route-arrow">→</span> <strong>Mumbai</strong>
+        </div>
+        <div class="match-pill-pulse" title="Active live match"></div>
+      </div>
+    </div>
+
+    <!-- Hero Content Container (Starts Directly with Headline) -->
+    <div class="hero-container">
+      <div class="hero-content">
+        
+        <!-- Main Headline (Dominant "Travel Cargo," with stepped-down tagline) -->
+        <h1 class="hero-headline">
+          <span class="headline-wordmark animate-fade-in" style="--delay: 80ms;">Travel Cargo,</span>
+          <span class="headline-tagline animate-fade-in" style="--delay: 180ms;">
+            Shipping made <span class="tagline-simple">simple.</span>
+          </span>
+        </h1>
+
+        <!-- Stepped-Down Editorial Subtext with Generous Breathing Room -->
+        <p class="hero-subtext animate-fade-in" style="--delay: 300ms;">
+          Connect with verified travelers to ship packages worldwide — save up to 70% versus traditional couriers and cut your carbon footprint.
+        </p>
+
+        <!-- Upgraded Interactive CTA Buttons -->
+        <div class="hero-actions animate-fade-in" style="--delay: 420ms;">
+          
+          <!-- Primary CTA Button with Box Opening & Confetti Burst on Hover -->
+          <button type="button" class="btn-cta btn-primary" id="btn-send-package">
+            <div class="btn-icon-wrapper parcel-icon-wrapper" id="parcel-icon-box" aria-hidden="true">
+              <!-- Custom Animated Doodle Box SVG -->
+              <svg class="doodle-box-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#200f07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- Box Base -->
+                <path class="box-base" d="M3 9v11a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9" fill="#c5e384" />
+                <path d="M12 22V9" />
+                <path d="M3 9h18" />
+                <!-- Box Lid (Flips open on hover) -->
+                <path class="box-lid" d="M2 5l10-2 10 2v4H2z" fill="#FFF9EB" />
+              </svg>
+              <!-- Confetti Burst Container -->
+              <div class="confetti-burst-container" id="parcel-confetti-container"></div>
+            </div>
+            <span class="btn-label">Send a Package</span>
+          </button>
+
+          <!-- Secondary CTA Button with Airplane Fly-Out & Loop-Back on Hover -->
+          <button type="button" class="btn-cta btn-secondary" id="btn-register-trip">
+            <div class="btn-icon-wrapper plane-icon-wrapper" id="plane-icon-slot" aria-hidden="true">
+              <!-- Custom Animated Doodle Airplane SVG -->
+              <svg class="doodle-plane-fly-svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#200f07" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path class="plane-wings-fill" d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" fill="#c4dae8" />
+              </svg>
+            </div>
+            <span class="btn-label">Register a Trip</span>
+          </button>
+        </div>
+
+        <!-- Alternate Action Link -->
+        <div class="hero-sub-action animate-fade-in" style="--delay: 520ms;">
+          <span>Can't find a traveler heading your way?</span>
+          <a href="#post-request" class="request-link" id="link-post-request">
+            Post your package request <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <!-- Social Proof / Trust Row -->
+        <div class="hero-trust animate-fade-in" style="--delay: 620ms;">
+          <div class="avatar-stack" aria-label="Traveler community avatars">
+            <div class="avatar avatar-1" title="Elena R. (Berlin → Mumbai)">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Elena R." loading="lazy" />
+            </div>
+            <div class="avatar avatar-2" title="Marcus T. (London → Tokyo)">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80" alt="Marcus T." loading="lazy" />
+            </div>
+            <div class="avatar avatar-3" title="Aisha K. (Dubai → Nairobi)">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=100&auto=format&fit=crop&q=80" alt="Aisha K." loading="lazy" />
+            </div>
+            <div class="avatar avatar-4" title="David C. (New York → São Paulo)">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80" alt="David C." loading="lazy" />
+            </div>
+            <div class="avatar avatar-plus" aria-label="Plus more travelers">
+              <span>+</span>
+            </div>
+          </div>
+          <div class="trust-text">
+            <div class="trust-stars" aria-label="5 star rating">
+              ★★★★★
+            </div>
+            <span class="trust-count"><strong>500+</strong> verified travelers already joined</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Interactive Modal: Send a Package -->
+  <div class="modal-overlay" id="modal-send-package" aria-modal="true" role="dialog" aria-labelledby="modal-send-title" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="modal-send-close" aria-label="Close modal">×</button>
+      <div class="modal-header">
+        <div class="modal-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#200f07" stroke-width="2">
+            <path d="m7.5 4.27 9 5.15"/>
+            <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/>
+          </svg>
+          <span>QUICK PACKAGE ESTIMATOR</span>
+        </div>
+        <h2 id="modal-send-title" class="modal-title">Ship with a Verified Traveler</h2>
+        <p class="modal-desc">Enter your route details to get matched with travelers heading that way.</p>
+      </div>
+
+      <form class="modal-form" id="form-send-package">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ship-origin">From (Origin City)</label>
+            <input type="text" id="ship-origin" class="form-input" placeholder="e.g. Berlin, Germany" value="Berlin" required />
+          </div>
+          <div class="form-group">
+            <label for="ship-destination">To (Destination City)</label>
+            <input type="text" id="ship-destination" class="form-input" placeholder="e.g. Mumbai, India" value="Mumbai" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="ship-weight">Package Size / Weight</label>
+            <select id="ship-weight" class="form-select">
+              <option value="small">Small Document / Pouch (< 0.5 kg)</option>
+              <option value="medium" selected>Medium Box / Gadget (1–2 kg)</option>
+              <option value="large">Luggage Space / Heavy (3–5 kg)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="ship-speed">Target Delivery Date</label>
+            <input type="date" id="ship-speed" class="form-input" />
+          </div>
+        </div>
+
+        <div class="cost-estimate-card">
+          <div class="estimate-line">
+            <span>Traditional Courier Cost:</span>
+            <span class="strikethrough-cost">$125.00</span>
+          </div>
+          <div class="estimate-line highlight">
+            <span>TravelCargo Peer-to-Peer:</span>
+            <span class="final-cost" id="calc-final-cost">$38.00</span>
+          </div>
+          <div class="savings-pill">
+            <span>🎉 You save $87.00 (70%) + save 14.2kg CO₂</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary modal-submit">Find Matching Travelers</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Interactive Modal: Register a Trip -->
+  <div class="modal-overlay" id="modal-register-trip" aria-modal="true" role="dialog" aria-labelledby="modal-trip-title" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="modal-trip-close" aria-label="Close modal">×</button>
+      <div class="modal-header">
+        <div class="modal-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#200f07" stroke-width="2">
+            <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/>
+          </svg>
+          <span>TRAVELER EARNING CALCULATOR</span>
+        </div>
+        <h2 id="modal-trip-title" class="modal-title">Monetize Your Extra Luggage</h2>
+        <p class="modal-desc">Heading somewhere? Earn $50–$300 per trip by carrying verified small packages.</p>
+      </div>
+
+      <form class="modal-form" id="form-register-trip">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="trip-origin">Departing From</label>
+            <input type="text" id="trip-origin" class="form-input" placeholder="e.g. London Heathrow" value="London" required />
+          </div>
+          <div class="form-group">
+            <label for="trip-destination">Arriving At</label>
+            <input type="text" id="trip-destination" class="form-input" placeholder="e.g. Tokyo Narita" value="Tokyo" required />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="trip-space">Available Extra Space</label>
+            <select id="trip-space" class="form-select">
+              <option value="1kg">1 kg (Documents / Keys / Watch)</option>
+              <option value="3kg" selected>3 kg (Backpack space / Gift box)</option>
+              <option value="5kg">5 kg+ (Spare suitcase compartment)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="trip-flight-date">Departure Date</label>
+            <input type="date" id="trip-flight-date" class="form-input" />
+          </div>
+        </div>
+
+        <div class="cost-estimate-card trip-earnings">
+          <div class="estimate-line highlight">
+            <span>Estimated Traveler Earnings:</span>
+            <span class="final-cost" id="calc-traveler-earnings">$145.00</span>
+          </div>
+          <div class="savings-pill">
+            <span>🛡️ 100% ID Verified & Insured up to $1,000</span>
+          </div>
+        </div>
+
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary modal-submit">Publish Trip & Get Verified</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
