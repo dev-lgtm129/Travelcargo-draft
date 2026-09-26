@@ -4,13 +4,23 @@
  * Compact Pill Live Match Card, and Interactive Modals.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
+// Immediate and event-driven initialization for maximum production reliability
+function bootstrap() {
   initNavbar();
   init3DDoodleGlobe();
   initButtonHoverAnimations();
   initLiveMatchTicker();
   initModals();
   initCalculators();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootstrap);
+} else {
+  bootstrap();
+}
+window.addEventListener('load', () => {
+  window.dispatchEvent(new Event('resize'));
 });
 
 /* ==========================================================================
@@ -62,7 +72,9 @@ function init3DDoodleGlobe() {
   if (!canvas) return;
 
   const ctx = canvas.getContext('2d');
-  let width, height, radius, cx, cy;
+  if (!ctx) return;
+
+  let width = 600, height = 600, radius = 300, cx = 390, cy = 370;
   let rotationY = 1.3;
   const tiltX = 0.40; // ~23 degrees axial tilt
   const tiltZ = -0.16;
@@ -204,20 +216,29 @@ function init3DDoodleGlobe() {
 
   function resize() {
     const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    width = rect.width;
-    height = rect.height;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
+    const parent = canvas.parentElement;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+    const computedWidth = rect.width || canvas.clientWidth || (parent ? parent.clientWidth : 0) || Math.min(window.innerWidth * 0.9, 1050) || 600;
+    const computedHeight = rect.height || canvas.clientHeight || (parent ? parent.clientHeight : 0) || Math.min(window.innerWidth * 0.9, 1050) || 600;
+
+    width = computedWidth;
+    height = computedHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.scale(dpr, dpr);
 
-    // Planet horizon peeking in from bottom-right corner
     radius = Math.min(width, height) * 0.52;
     cx = width * 0.65;
     cy = height * 0.62;
   }
 
-  window.addEventListener('resize', resize);
+  window.addEventListener('resize', resize, { passive: true });
+  if (window.ResizeObserver && canvas.parentElement) {
+    const ro = new ResizeObserver(() => resize());
+    ro.observe(canvas.parentElement);
+  }
   resize();
 
   // 3D coordinate spherical projection
@@ -302,10 +323,17 @@ function init3DDoodleGlobe() {
 
   // Main 60fps Continuous Render Loop
   let lastTime = performance.now();
+  let frameCount = 0;
 
   function render(now) {
     const delta = Math.min(32, now - lastTime);
     lastTime = now;
+    frameCount++;
+
+    // Safety check on first 5 frames to guarantee canvas is sized once fonts/styles settle
+    if (frameCount <= 5 && (width <= 10 || height <= 10)) {
+      resize();
+    }
 
     // Subtle, continuous, relaxing 3D rotation
     rotationY += 0.00014 * delta;
